@@ -1,3 +1,4 @@
+import 'package:calculator_app/color.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
@@ -52,7 +53,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(14, 36, 51, 1),
       appBar: AppBar(
-        backgroundColor:  const Color.fromRGBO(14, 36, 51, 1),
+        backgroundColor: const Color.fromRGBO(14, 36, 51, 1),
         elevation: 0,
         title: const Text('Calculator'),
         titleTextStyle: const TextStyle(fontSize: 15),
@@ -113,18 +114,10 @@ class _CalculatorAppState extends State<CalculatorApp> {
           ),
           Row(
             children: [
-              button(
-                text: '7',
-              ),
-              button(
-                text: '8',
-              ),
-              button(
-                text: '9',
-              ),
-              button(
-                text: '',
-              ),
+              button(text: '7'),
+              button(text: '8'),
+              button(text: '9'),
+              button(text: '',color: anotherColor),
             ],
           ),
           Row(
@@ -132,7 +125,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
               button(text: '0', padding: 20.0),
               button(text: '00', padding: 20.0),
               button(text: '.', padding: 20.0),
-              button(text: '=', padding: 20.0),
+              button(text: '=', padding: 20.0, color: anotherColor),
             ],
           ),
         ],
@@ -141,14 +134,17 @@ class _CalculatorAppState extends State<CalculatorApp> {
   }
 
   Widget button(
-      {text, tColor = Colors.white, padding = 20.0, fontSize = 18.0}) {
+      {text,
+      color = const Color.fromRGBO(11, 52, 79, 1),
+      padding = 20.0,
+      fontSize = 18.0}) {
     return Expanded(
         child: Container(
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     shape: const BeveledRectangleBorder(),
                     padding: EdgeInsets.all(padding),
-                    backgroundColor: const Color.fromRGBO(11, 52, 79, 1)),
+                    backgroundColor: color),
                 onPressed: () => onButtonClick(text),
                 child: Text(
                   text,
